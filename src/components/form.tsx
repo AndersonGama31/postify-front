@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -22,12 +24,12 @@ export const Form = () => {
 
   return (
     <form
-      className="flex flex-col justify-evenly items-center w-[40%] h-[400px] bg-white
+      className="flex flex-col justify-evenly items-center w-full h-[500px] bg-white
       text-slate-950"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col items-center justify-center w-full h-[200px] gap-5">
-        <h1 className="text-5xl font-semibold tracking-tight">Welcome Back</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Welcome Back</h1>
         <p className="text-lg text-muted-foreground">Sign in to continue</p>
       </div>
       <div className="flex flex-col space-y-6 w-[300px] mt-5">
