@@ -24,14 +24,15 @@ export const Form = () => {
 
   return (
     <form
-      className="flex flex-col justify-evenly items-center w-full h-[500px] bg-white
+      className="flex flex-col justify-evenly items-center w-full h-full bg-white
       text-slate-950"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col items-center justify-center w-full h-[200px] gap-5">
-        <h1 className="text-3xl font-semibold tracking-tight">Welcome Back</h1>
+      <div className="flex flex-col items-center justify-center w-full h-[100px] gap-5">
+        <h1 className="text-3xl font-semibold tracking-tight">Join the DEV community</h1>
         <p className="text-lg text-muted-foreground">Sign in to continue</p>
       </div>
+
       <div className="flex flex-col space-y-6 w-[300px] mt-5">
         <div className="flex flex-col w-full h-15">
           <Input placeholder="Email" {...register('email')} />
