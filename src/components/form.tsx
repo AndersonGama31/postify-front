@@ -47,6 +47,11 @@ export const Form = () => {
             {isSubmitting ? 'Loading' : 'Sign In'}
           </Button>
         </div>
+
+        <div className="flex items-center justify-center w-full gap-2">
+          <p>Don&apos;t have an account? </p>
+          <span className="text-blue-500 cursor-pointer hover:underline">Sign up</span>
+        </div>
       </div>
     </form>
   )
