@@ -3,8 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/navigation'
 import { setCookie, parseCookies } from 'nookies'
 
-import * as api from '@/services'
-import apiClient from '@/services/api/client/api-client'
+import * as apiClient from '@/services/api/client'
 
 type ILoginPayload = {
   password: string
@@ -44,7 +43,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
 
   async function handleSignIn({ email, password }: ILoginPayload) {
     try {
-      const response = await api.Authenticate({ email, password })
+      const response = await apiClient.Authenticate({ email, password })
 
       const { access_token } = response
 
@@ -70,7 +69,6 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
 
   function loadStorageData() {
     setUser(user)
-    apiClient.setTokenInHeader(token)
   }
 
   useEffect(() => loadStorageData(), [token])

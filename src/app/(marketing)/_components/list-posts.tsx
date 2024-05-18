@@ -1,12 +1,11 @@
-import { fetchServer } from '@/services/api-server'
-import apiServerComponents from '@/services/api-server-components'
+import * as apiServer from '@/services/api/server'
 
 async function ListPosts() {
   //   const posts = await fetchServer('/posts', {
   //     method: 'GET'
   //   }).then(response => response.json())
 
-  const posts = await apiServerComponents.api.get('/posts')
+  const posts = await apiServer.List()
 
   if (!posts) return null
 

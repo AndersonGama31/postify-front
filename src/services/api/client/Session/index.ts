@@ -1,4 +1,6 @@
-import apiClient from '../api/client/api-client'
+/* eslint-disable prettier/prettier */
+
+import apiClient from '../api-client'
 
 const route = '/signIn'
 

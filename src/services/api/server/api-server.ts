@@ -1,5 +1,3 @@
-'use server'
-
 /* eslint-disable prettier/prettier */
 import axios, { Axios, AxiosError } from 'axios'
 import { cookies } from 'next/headers'

@@ -1,4 +1,7 @@
-import apiServer from '../api/server/api-server'
+/* eslint-disable prettier/prettier */
+'use server'
+
+import apiServer from '../api-server'
 
 const route = '/posts'
 

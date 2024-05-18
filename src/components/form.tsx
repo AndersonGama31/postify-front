@@ -4,6 +4,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useAuth } from '@/context/AuthContext'
+import { useAuthModal } from '@/hooks/useAuthModal'
 import { TSignInSchema, signInSchema } from '@/schema/schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -11,7 +12,8 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 
 export const Form = () => {
-  const { handleSignIn, text } = useAuth()
+  const authModal = useAuthModal()
+  const { handleSignIn } = useAuth()
   const {
     register,
     handleSubmit,
@@ -22,14 +24,12 @@ export const Form = () => {
 
   const onSubmit = async ({ email, password }: TSignInSchema) => {
     try {
-      const response = await handleSignIn({ email, password })
-      console.log(response)
+      await handleSignIn({ email, password })
+      authModal.onClose()
     } catch (error) {
       console.log(error)
     }
   }
-
-  console.log(text)
 
   return (
     <form
