@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { ListPosts } from '@/app/(marketing)/_components/list-posts'
+import { PostList } from '../_components/post-list'
 
 const HomePage = () => {
   return (
-    <div>
-      <ListPosts />
+    <div className="flex w-full justify-center">
+      <PostList />
     </div>
   )
 }

@@ -5,7 +5,7 @@ import apiServer from '../api-server'
 
 const route = '/posts'
 
-interface IPostResponse {
+export interface IPostResponse {
     createdAt: string
     content: string
     title: string
