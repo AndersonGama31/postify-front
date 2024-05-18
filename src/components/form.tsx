@@ -3,6 +3,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useAuth } from '@/context/AuthContext'
 import { TSignInSchema, signInSchema } from '@/schema/schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -10,6 +11,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 
 export const Form = () => {
+  const { handleSignIn, text } = useAuth()
   const {
     register,
     handleSubmit,
@@ -19,8 +21,15 @@ export const Form = () => {
   })
 
   const onSubmit = async ({ email, password }: TSignInSchema) => {
-    console.log({ email, password })
+    try {
+      const response = await handleSignIn({ email, password })
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  console.log(text)
 
   return (
     <form
@@ -30,7 +39,7 @@ export const Form = () => {
     >
       <div className="flex flex-col items-center justify-center w-full h-[100px] gap-5">
         <h1 className="text-3xl font-semibold tracking-tight">Join the DEV community</h1>
-        <p className="text-lg text-muted-foreground">Sign in to continue</p>
+        <p className="text-lg text-muted-foreground">Sign in to continue </p>
       </div>
 
       <div className="flex flex-col space-y-6 w-[300px] mt-5">

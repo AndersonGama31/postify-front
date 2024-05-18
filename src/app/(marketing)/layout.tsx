@@ -1,5 +1,4 @@
 'use client'
-
 import { ModalProvider } from '@/providers/modal-provider'
 
 import { Footer } from './_components/footer'
