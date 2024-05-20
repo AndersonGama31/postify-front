@@ -12,6 +12,7 @@ export interface IPostResponse {
     id: string
     published: boolean
     authorId: string
+    banner: string
 }
 
 const List = (): Promise<IPostResponse[]> => apiServer.api.get(route)

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import AWS from 'aws-sdk'
 
 export async function uploadToS3(file: File) {
@@ -21,16 +22,14 @@ export async function uploadToS3(file: File) {
             Body: file
         }
 
-        const upload = s3.putObject(params).promise()
+        await s3.putObject(params).promise()
 
-        await upload.then(data => {
-            console.log('successfully uploaded file', file_key)
-        })
+        const bucketName = process.env.NEXT_PUBLIC_AWS_BUCKET_NAME;
+        const region = process.env.NEXT_PUBLIC_AWS_REGION;
 
-        return Promise.resolve({
-            file_key,
-            file_name: file.name
-        })
+        const url = `https://${bucketName}.s3.${region}.amazonaws.com/${file_key}`;
+
+        return Promise.resolve(url)
     } catch (error) {
         console.log({ error })
     }
