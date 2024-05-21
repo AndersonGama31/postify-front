@@ -10,7 +10,7 @@ export const AuthModal = () => {
     <Dialog open={authModal.isOpen} onOpenChange={authModal.onClose}>
       <DialogContent className="max-w-md p-0 overflow-hidden bg-white">
         <div className="text-neutral-700 mx-auto space-y-6 p-6">
-          <Component.Form />
+          <Component.AuthForm />
         </div>
       </DialogContent>
     </Dialog>

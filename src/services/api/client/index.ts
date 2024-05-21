@@ -1,2 +1,2 @@
-export { Authenticate } from './Session'
+export { Authenticate, SignUp } from './Session'
 export { CreatePost } from './Post'

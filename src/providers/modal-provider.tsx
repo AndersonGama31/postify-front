@@ -19,6 +19,7 @@ export const ModalProvider = () => {
     <>
       <Modal.AuthModal />
       <Modal.AddPostModal />
+      <Modal.SignUpModal />
     </>
   )
 }

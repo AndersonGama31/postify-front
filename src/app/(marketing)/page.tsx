@@ -1,8 +1,10 @@
+'use client'
+
 import { Poppins } from 'next/font/google'
 import localFont from 'next/font/local'
-import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { useSignUpModal } from '@/hooks/useSignUpModal'
 import { cn } from '@/lib/utils'
 
 const headingFont = localFont({
@@ -15,6 +17,7 @@ const textFont = Poppins({
 })
 
 const MarketingPage = () => {
+  const signUpModal = useSignUpModal()
   return (
     <div className="flex items-center justify-center flex-col">
       <div className={cn('flex items-center justify-center flex-col', headingFont.className)}>
@@ -34,8 +37,8 @@ const MarketingPage = () => {
           publish your content with ease.
         </p>
       </div>
-      <Button className="mt-6" size="lg" asChild>
-        <Link href="/sign-up">Get Postify for free</Link>
+      <Button className="mt-6" size="lg" onClick={signUpModal.onOpen}>
+        Get Postify for free
       </Button>
 
       {/* <ListPosts /> */}

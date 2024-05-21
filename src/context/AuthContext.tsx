@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { setCookie, parseCookies } from 'nookies'
 
 import * as apiClient from '@/services/api/client'
+import { ISignUpPayload } from '@/services/api/client/Session/interface'
 
 type ILoginPayload = {
   password: string
@@ -19,10 +20,10 @@ interface IUser {
 
 interface IAuthenticateContext {
   handleSignIn({ password, email }: ILoginPayload): Promise<IUser | void>
+  handleSignUp({ name, email, password, avatar, job }: ISignUpPayload): Promise<void>
   handleSignOut(): void
   user: IUser | null
   signed: boolean
-  text: string
 }
 
 interface IAuthProviderProps {
@@ -58,6 +59,23 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   }
 
+  async function handleSignUp({ name, email, password, avatar, job }: ISignUpPayload) {
+    try {
+      const response = await apiClient.SignUp({ name, email, password, avatar, job })
+
+      const { access_token, user } = response
+
+      setCookie(undefined, 'postify.token', access_token, { maxAge: 30 * 24 * 60 * 60, path: '/' })
+
+      setUser(user)
+      setSigned(true)
+      router.push('/home')
+    } catch (error) {
+      console.log(error)
+      return alert('Erro ao fazer login')
+    }
+  }
+
   function handleSignOut() {
     localStorage.clear()
 
@@ -74,7 +92,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
   useEffect(() => loadStorageData(), [token])
 
   return (
-    <AuthContext.Provider value={{ handleSignOut, handleSignIn, signed, user, text: 'batata' }}>
+    <AuthContext.Provider value={{ handleSignOut, handleSignIn, signed, user, handleSignUp }}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,21 +1,11 @@
 /* eslint-disable prettier/prettier */
 
 import apiClient from '../api-client'
+import { IAuthPayload, IUser, ISignUpPayload, ISignUpResponse } from './interface'
 
-const route = '/signIn'
+const route = 'auth/'
 
-interface IAuthPayload {
-    email: string
-    password: string
-}
+const Authenticate = (payload: IAuthPayload): Promise<IUser> => apiClient.api.post(route + 'signIn', payload)
+const SignUp = (payload: ISignUpPayload): Promise<ISignUpResponse> => apiClient.api.post(route + 'signUp', payload)
 
-interface IUser {
-    id: string
-    name: string
-    email: string
-    access_token: string
-}
-
-const Authenticate = (payload: IAuthPayload): Promise<IUser> => apiClient.api.post(route, payload)
-
-export { Authenticate }
+export { Authenticate, SignUp }

@@ -11,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 
-export const Form = () => {
+export const AuthForm = () => {
   const authModal = useAuthModal()
   const { handleSignIn } = useAuth()
   const {
