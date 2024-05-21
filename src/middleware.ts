@@ -6,7 +6,7 @@ export default function middleware(req: NextRequest) {
 
     const token = req.cookies.get('postify.token')?.value
 
-    const signInUrl = new URL('/signin', req.url).toString()
+    const signInUrl = new URL('/', req.url).toString()
     const homeUrl = new URL('/home', req.url).toString()
 
     if (!token) {
